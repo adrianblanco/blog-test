@@ -1,0 +1,34 @@
+baseURL = "https://example.com"
+languageCode = "en-us"
+title = "Joway's Blog"
+theme = "yinyang"
+DefaultContentLanguage = "en"
+
+[author]
+  name = "Adrian's blog"
+  homepage = "https://joway.io/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  type = "golang"
+
+[languages]
+  [languages.en]
+    contentDir = "content/en"
+    languageName = "English"
+    weight = 1
+  [languages.es]
+    contentDir = "content/es"
+    languageName = "Spanish"
+    weight = 1
+
+[params]
+disqus = "joway" # disqus account name
+extraHead = ''
+tag = "tags"
+category = "categories"
+
+[[params.socials]]
+name = "About Me"
+link = "https://joway.io"
