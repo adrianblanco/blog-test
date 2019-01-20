@@ -1,0 +1,7 @@
+<ul>
+  {{ range .Params.tags }}
+    <li>
+      <a href="{{.RelPermalink}}">{{ .Title }}</a>
+    </li>
+  {{ end }}
+</ul>

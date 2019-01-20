@@ -85,7 +85,7 @@
             
                   {{ range .Pages -}}
                   <div class="row post-line">
-                    <div class="posts-date col-xs-2">
+                    <div class="posts-date col-xs-1">
                       <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
                     </div>
 
@@ -99,13 +99,13 @@
                       {{ $class = "red" }}
                     {{ end }}
                     
-                    <span class="content col-xs-1 {{ $class }}"> {{.Description}} </span>
+                    <div class="col-xs-1"><span class="content  {{ $class }}"> {{.Description}} </span></div>
                                     
-                    <div class="posts-title col-xs-8">
+                    <div class="posts-title col-xs-6">
                         <a class="posts-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
                     </div>
 
-                    <div id="tags">
+                    <div class="col-xs-2" id="tags">
                     {{ range .Params.tags }}
                     <a class="posts-tags" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
                     {{ end }}
@@ -125,9 +125,12 @@
               </div>
 
 
-              <div class="posts-footer">
+              <div class="posts-footer col-xs-3 col-xs-offset-9">
                 {{ range .Site.Params.socials }}
                 <div class="posts-footer-item">
+                  <a href="{{ .link }}" target="_blank">{{ .name }}</a>
+                  <a href="{{ .link }}" target="_blank">{{ .name }}</a>
+
                   <a href="{{ .link }}" target="_blank">{{ .name }}</a>
                 </div>
                 {{ end }}
