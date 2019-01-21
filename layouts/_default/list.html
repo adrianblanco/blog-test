@@ -1,4 +1,3 @@
-{{ define "main" }}
 <main>
     <article>
         <header>
@@ -9,11 +8,42 @@
     </article>
     <ul>
     <!-- Ranges through content/posts/*.md -->
+    <div class="posts-title col-xs-6">
+                        <a class="posts-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </div>
+
     {{ range .Pages }}
         <li>
-            <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+            <title>{{ .Title }}</title>
+            <a href="{{.Permalink}}">{{.Title}}  {{.Content}} {{.Description}} {{.Date.Format "2006-01-02"}} | </a>
         </li>
     {{ end }}
     </ul>
 </main>
+
+<section id="menu">
+    <ul>
+        {{ range $key, $taxonomy := .Site.Taxonomies.featured }}
+        <li>{{ $key }}</li>
+        <ul>
+            {{ range $taxonomy.Pages }}
+            <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}">{{ .LinkTitle }}</a></li>
+
+            {{ partial "date-and-tags.html" . }}
+
+            {{ end }}
+        </ul>
+        {{ end }}
+    </ul>
+</section>
+
+
+<h1>{{ .Title }}</h1>
+
+{{ range .Pages.ByPublishDate.Reverse }}
+<p>
+  <a class="font-125" href="{{ .Permalink }}">{{ .Title }}</a>
+  <br>
+  {{ partial "date-and-tags.html" . }}
+</p>
 {{ end }}
